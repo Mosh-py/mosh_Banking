@@ -124,7 +124,7 @@ public class AfterLogInController {
 				
 			}
 			
-			return "successfulTransfer";
+			return "SuccessfulTransfer";
 			
 		
 	}
