@@ -1,150 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Welcome here</title>
-<link rel = "stylesheet" type = "text/css" href = "css/background.css" > 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+    /* General Body Style */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+    }
 
-	body{
-		
-		background-size:cover;
-		margin: 0px;
-		padding: 0px;
-	}
-	h3{
-		padding: 10px;
-		
-	}
-	#services{
-		width: 60%;
-		border: 2pxsolid red;
-		color: black;
-		position: absolute;
-		margin: 10px 20%;
-		text-align: center;
-		
-	}
-	
-	.service{
-		
-		width: 50px;
-		border-radius: 10%;
-		margin: auto;
-		margin-bottom: 10px;
-		padding: 10px;
-		background-color: white;
-		color: blue;
-		font-weight: bolder;
-		
-	}
-	.service:hover{
-		background-color: green;
-		color: white;
-		font-weight: bolder;
-	}
-	
-	#userDetails{
-		color: black;
-		
-		text-align: center;
-		background-color: white;
-	}
+    h3, h2 {
+        margin: 0;
+        padding: 10px;
+        color: #333;
+    }
 
-	#firstSection , #thirdSection{
-		background-color:green;
-		height: 10px;
-	}
-	.special{
-		color:green;
-	}
+    /* Services Container */
+    #services {
+        max-width: 80%;
+        margin: 20px auto;
+        text-align: center;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    }
 
-	#footer{
-		position:fixed;
-		bottom:0px;
-		left:0px;
-		right: 0px;
-	}
+    .service {
+        display: inline-block;
+        width: 45%;
+        margin: 10px 2.5%;
+        padding: 20px;
+        text-align: center;
+        background: linear-gradient(45deg, #007bff, #00d4ff);
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        transition: 0.3s;
+        text-decoration: none;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-	#firstHead, #thirdHead{
-		background-color: green;
-		width: 100%;
-		height: 10px;
-	}
-	#secondHead{
-		background-color: white;
-		text-align:center;
-	}
+    .service:hover {
+        background: linear-gradient(45deg, #0056b3, #0080ff);
+        cursor: pointer;
+        transform: translateY(-3px);
+    }
+
+    /* User Info Section */
+    #userDetails {
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 25px;
+        border-radius: 20px;
+        max-width: 80%;
+        margin: 20px auto;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        font-size: 18px;
+    }
+
+    .special {
+        color: #28a745;
+        font-weight: bold;
+    }
+
+    /* Footer */
+    #footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #fff;
+        text-align: center;
+        padding: 15px;
+        font-size: 14px;
+        box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid #ddd;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 600px) {
+        .service {
+            width: 90%;
+            padding: 15px;
+        }
+
+        #services {
+            width: 90%;
+        }
+
+        #userDetails {
+            width: 90%;
+            font-size: 16px;
+        }
+    }
+
+    /* Loader */
+    #loader {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 </style>
 </head>
-
 <body>
-	
-	<div id = container>
-		<section id = "firstSection">
 
-		</section>
-		<div id = userDetails >
-			<h2> Hi, <span th:text = "${session.username}"> </span> with Id <span th:text = "${session.id}" class = special> John Doe </span> </h3>
-			<h3> Your balance is <span  id = "balance" th:text = "${session.balance}" class = special>  </span></h3>
-		</div>
+    <div id="loader"></div>
 
-		<section id = "thirdSection">
+    <div id="container">
+        <div id="userDetails">
+            <h2> Welcome, <span th:text="${session.username}"> </span> with Id <span th:text="${session.id}" class="special"> John Doe </span> </h2>
+            <h3> Your balance is <span id="balance" th:text="${session.balance}" class="special"> </span></h3>
+        </div>
 
-		</section>
-		<section id = services>
-			<a href = "/transfer" target = "_blank"> <p class = service> Tranfer</p></a>
+        <section id="services">
+            <a href="/transfer" class="service" target = "_blank"> Transfer </a>
+        </section>
 
-			<a href = "/history" ><p class = service> History </p></a>
-		</section>
+        <footer id="footer">
+            <h5> adagejem@gmail.com | <a href="https://x.com/Adagejem" target="_blank">Follow me on Twitter</a> </h5>
+        </footer>
+    </div>
 
-		<footer id = footer>
-			<section id = firstHead  class = headers> </section>
-			<section id = secondHead class = headers> 
-				<h5> adagejem@gmail.com </h5>
-			</section>
-			<section id = thirdHead  class = headers> </section>
-	 
-		</footer>
-
-		
-	</div>
-
-	<script>
-        // Wait until the page is fully loaded
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Establish WebSocket connection when the page loads
-            const socket = new WebSocket('ws://localhost:8082/balance-updates'); // Adjust URL to your WebSocket endpoint
+            const socket = new WebSocket('ws://localhost:8082/balance-updates');
+            const loader = document.getElementById('loader');
 
-            // When the WebSocket connection is established
             socket.onopen = function() {
                 console.log('WebSocket connected!');
-                // Optionally, send a message to the server if needed
-                // socket.send(JSON.stringify({action: 'requestBalanceUpdate'}));
+                loader.style.display = 'none';  // Hide loader when connection is open
             };
 
-            // Listen for incoming WebSocket messages
             socket.onmessage = function(event) {
                 const message = JSON.parse(event.data);
-				console.log("Hi, testing the message" + message);
                 if (message.balance) {
-                    // Update the balance displayed in the UI
-                    document.getElementById('balance').textContent =  message.balance;
-                    console.log(message.balance);
+                    document.getElementById('balance').textContent = message.balance;
+                    console.log('Updated Balance:', message.balance);
                 }
             };
 
-            // Handle errors
             socket.onerror = function(error) {
                 console.error('WebSocket error:', error);
-                document.getElementById('balance').textContent =  "Error loading balance"
+                document.getElementById('balance').textContent = "Error loading balance";
             };
 
-            // Handle WebSocket closure
             socket.onclose = function() {
                 console.log('WebSocket connection closed');
             };
+
+            // Show loader when waiting for connection
+            loader.style.display = 'block';
         });
     </script>
+
 </body>
 </html>

@@ -118,9 +118,10 @@ public class AfterLogInController {
 				session.setAttribute("message", "sorry, user with id" + receiversId + "not found");
 				return "handleError";
 			}catch(Exception e) {
-//				session.setAttribute("message", "Something went wrong, kindly try again");
-//				return "handleError";
+				session.setAttribute("message", "Something went wrong, kindly try again");
 				e.printStackTrace();
+				return "handleError";
+				
 			}
 			
 			return "successfulTransfer";

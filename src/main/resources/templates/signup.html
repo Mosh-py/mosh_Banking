@@ -1,33 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<link href="css/login.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #formContainer {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        legend {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .textInput {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .textInput:focus {
+            border-color: #2c3e50;
+            outline: none;
+        }
+
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #1a252f;
+        }
+
+        p {
+            text-align: center;
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
+    <div id="formContainer">
+        <fieldset>
+            <legend>Sign Up</legend>
+            <form id="realForm" method="post" action="/signup">
+                <label for="firstName">First Name:</label>
+                <input type="text" name="firstName" class="textInput" required>
 
-	<div id="formContainer" class = "form">
-		<fieldset>
-			<legend>log-in</legend>
-			<form id="realForm" method="post" action="/signup">
-				<span id=getter> <label type=text for="firstName">FirstName:
-				</label> <input type="text" name=firstName class = "textInput"> </br> </br> <label type=text
-					for="lastName">LastName: </label> <input type="text" name=lastName class = "textInput">
-					</br> </br> <label type=text for="username">Username: </label> <input
-					type="text" name=username class = "textInput"> </br> </br> <label type=text for="email">Email:
-				</label> <input type="text" name=email class = "textInput"> </br> </br> <label type=text
-					for="password">Password: </label> <input type="password"
-					name=password class = "textInput"> </br> </br>
-				</span> 
-				<input type="submit" value="Submit" class=button id = "SubmitButton">  
-				<input type="reset" class=button id = "ResetButton">
+                <label for="lastName">Last Name:</label>
+                <input type="text" name="lastName" class="textInput" required>
 
-			</form>
-		</fieldset>
-		<p th:text="${message}"> </p>
-		<p >  <span th:text = "${id} " style = "color:red;"> </span>  </p>
-	</div>
+                <label for="username">Username:</label>
+                <input type="text" name="username" class="textInput" required>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="textInput" required>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="textInput" required>
+
+                <input type="submit" value="Submit" class="button">
+                <input type="reset" value="Reset" class="button" style="background: #ccc; color: #333;">
+            </form>
+            <p th:text="${message}"></p>
+            <p><span th:text="${id}" style="color:red;"></span></p>
+        </fieldset>
+    </div>
 </body>
 </html>

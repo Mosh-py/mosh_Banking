@@ -3,45 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href = "/css/login.css" rel = "stylesheet" type = "text/css">
-    <link href="/css/background.css" rel = "stylesheet" type="text/css">
-</head> 
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #formContainer {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        legend {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .textInput {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .textInput:focus {
+            border-color: #2c3e50;
+            outline: none;
+        }
+
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #1a252f;
+        }
+
+        p {
+            text-align: center;
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
 <body>
-     
-    <!-- <form action = "/transfer" method= "post" class = form>
-		<img src = "images/Transfer.png">
-		<section class = "details">
-			<label for = "receiverId" t> Receiver Id</label> 
-			<input type = number required name = receiverId class = textInput> <br /> <br />
-		
-			<label for = amount> Amount</label>
-			<input type = number required name = amount class = textInput>
-		</section>
-		
-		
-		<input type = "submit" value = "Transfer" id = "transferButton" >
-	</form> -->
-
-    <div id = "formContainer" class = form>
+    <div id="formContainer">
         <fieldset>
-            <legend>log-in</legend>
-            <form id = "realForm" method = post action = "/login" >
-                <span id = getter>
-                    <label type = text for ="username">Username: </label>
-                    <input type = "text" name = username class = textInput>
-                    </br> </br>
+            <legend>Log In</legend>
+            <form id="realForm" method="post" action="/login">
+                <label for="username">Username:</label>
+                <input type="text" name="username" class="textInput" required>
 
-                    <label type = text for ="password" id ="password">password: </label>
-                    <input type = "password" name = password class = textInput >
-                    
-                    </br> </br>
-                </span>
-                <input type = "submit" value = "Submit" class = button id = "SubmitButton">
-                <input type = "reset"  class = button id="ResetButton">
-                
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="textInput" required>
+
+                <input type="submit" value="Submit" class="button">
+                <input type="reset" value="Reset" class="button" style="background: #ccc; color: #333;">
             </form>
-            <p th:text="${message}"> </p>
+            <p th:text="${message}"></p>
         </fieldset>
     </div>  
 </body>

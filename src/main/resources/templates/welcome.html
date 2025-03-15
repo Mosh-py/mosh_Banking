@@ -1,59 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link href = "css/layout.css" rel = "stylesheet" type = "text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Header */
+        #headContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h5 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        /* Introduction */
+        #introduction {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* About Section */
+        #about {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #founderPic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Buttons */
+        .inner {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #1a252f;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        #footer {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            #headContainer {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+
+            h4 {
+                font-size: 1.3rem;
+            }
+
+            .inner {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
-<style>
-	
-	
-	button{
-        display: block;
-    }
-    #about{
-    	width: 25%;
-    }
-	
-</style>
 <body>
-
-    <div id = "headContainer">
-		<section id = firstHead  class = headers> </section>
-		<section id = secondHead class = headers> 
-			<h5> Welcome</h5>
-		</section>
-		<section id = thirdHead  class = headers> </section>
-
-	</div>
-
-    <div id = introduction>
-        <p id = aboutMe> Hi,I am Adageje Moshood, a Computer Science Student , a psychology lover and a Java/Spring boot developer</p>
-    </div>
-    <hr>
-    <div id = about>
-        <img src = "images/moshood.jpg" id = founderPic>
-        <h4> About the project</h4>
-        <p> This page was created in order to test project which is to simulate how bank applications work, hopefully with time, we will able to get it</p>
+    <div id="headContainer">
+        <h5>Welcome</h5>
     </div>
 
+    <div id="introduction">
+        <p>Hi, I am Adageje Moshood, a Computer Science Student, a psychology lover, and a Java/Spring Boot developer.</p>
+    </div>
 
-    
-        <div class = inner>
-           <a href= "/signup"> <button id = signUp> Sign Up </button> </a>
-            <a href ="/login"> <button id = "login"> Log In </button> </a>
-        </div>
+    <div id="about">
+        <img src="images/moshood.jpg" id="founderPic" alt="Founder Picture">
+        <h4>About the Project</h4>
+        <p>This page was created to simulate a banking application. We aim to refine and expand its functionality over time.</p>
+    </div>
 
-        <footer id = footer>
-			<section id = firstHead  class = headers> </section>
-			<section id = secondHead class = headers> 
-				<h5> adagejem@gmail.com </h5>
-			</section>
-			<section id = thirdHead  class = headers> </section>
-	    </footer>
-        
-    
+    <div class="inner">
+        <a href="/signup">
+            <button id="signUp">Sign Up</button>
+        </a>
+        <a href="/login">
+            <button id="login">Log In</button>
+        </a>
+    </div>
+
+    <footer id="footer">
+        <p>adagejem@gmail.com</p>
+    </footer>
 </body>
+
 </html>
