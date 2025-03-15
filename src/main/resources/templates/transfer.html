@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel = "stylesheet" type = "text/css" href = "css/background.css" > 
+
+<style>
+	
+	
+	form{
+		color:white;
+		margin: 10px;
+		
+	}
+	
+	input{
+		padding: 10px;
+	}
+	#transferButton:hover{
+		background-color: green;
+		color: white;
+		
+	}
+	#transferButton{
+		font-weight: bolder;
+		color:green;
+		display:block;
+		margin: 10px auto;
+		margin-bottom: 10px;
+		
+	}
+	
+	
+	#firstHead, #thirdHead{
+		background-color: green;
+		width: 100%;
+		height: 10px;
+	}
+	#secondHead{
+		background-color: white;
+		text-align:center;
+	}
+	h5{
+		color:green;
+		padding: 5px;
+	}
+	
+	#footer{
+		position:fixed;
+		bottom:0px;
+		left:0px;
+		right: 0px;
+	}
+	.form{
+		background-color: white;
+		width: 60%;
+		margin: auto 20%;
+		color: green;
+		font-weight: bold;
+		padding: 10px;
+		border-radius: 7px;
+		position: absolute;
+		top:15%;
+		box-shadow: 2px 5px 7px 3px  rgb(0, 0, 0);
+	}
+	.textInput{
+		display: block;
+		width: 100%;
+		border: 2px solid green;
+		
+	}
+	.details{
+		width: 80%;
+		
+		margin: 0px 10%;
+	}
+		
+	img{
+		width:26%;
+		margin: 10px 37%;
+	}
+</style>
+</head>
+<body>
+	<div id = "headContainer">
+		<section id = firstHead  class = headers> </section>
+		<section id = secondHead class = headers> 
+			<h5> Welcome</h5>
+		</section>
+		<section id = thirdHead  class = headers> </section>
+
+	</div>
+	<form action = "/transfer" method= "post" class = form>
+		<img src = "images/Transfer.png">
+		<section class = "details">
+			<label for = "receiverId" t> Receiver Id</label> 
+			<input type = number required name = receiverId class = textInput> <br /> <br />
+		
+			<label for = amount> Amount</label>
+			<input type = number required name = amount class = textInput>
+		</section>
+		
+		
+		<input type = "submit" value = "Transfer" id = "transferButton" >
+	</form>
+
+	<footer id = footer>
+		<section id = firstHead  class = headers> </section>
+		<section id = secondHead class = headers> 
+			<h5> adagejem@gmail.com </h5>
+		</section>
+		<section id = thirdHead  class = headers> </section>
+
+	</footer>
+</body>
+</html>

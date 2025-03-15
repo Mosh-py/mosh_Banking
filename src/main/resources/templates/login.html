@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href = "/css/login.css" rel = "stylesheet" type = "text/css">
+    <link href="/css/background.css" rel = "stylesheet" type="text/css">
+</head> 
+<body>
+     
+    <!-- <form action = "/transfer" method= "post" class = form>
+		<img src = "images/Transfer.png">
+		<section class = "details">
+			<label for = "receiverId" t> Receiver Id</label> 
+			<input type = number required name = receiverId class = textInput> <br /> <br />
+		
+			<label for = amount> Amount</label>
+			<input type = number required name = amount class = textInput>
+		</section>
+		
+		
+		<input type = "submit" value = "Transfer" id = "transferButton" >
+	</form> -->
+
+    <div id = "formContainer" class = form>
+        <fieldset>
+            <legend>log-in</legend>
+            <form id = "realForm" method = post action = "/login" >
+                <span id = getter>
+                    <label type = text for ="username">Username: </label>
+                    <input type = "text" name = username class = textInput>
+                    </br> </br>
+
+                    <label type = text for ="password" id ="password">password: </label>
+                    <input type = "password" name = password class = textInput >
+                    
+                    </br> </br>
+                </span>
+                <input type = "submit" value = "Submit" class = button id = "SubmitButton">
+                <input type = "reset"  class = button id="ResetButton">
+                
+            </form>
+            <p th:text="${message}"> </p>
+        </fieldset>
+    </div>  
+</body>
+</html>

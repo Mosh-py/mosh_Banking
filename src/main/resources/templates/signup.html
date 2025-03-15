@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link href="css/login.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+	<div id="formContainer" class = "form">
+		<fieldset>
+			<legend>log-in</legend>
+			<form id="realForm" method="post" action="/signup">
+				<span id=getter> <label type=text for="firstName">FirstName:
+				</label> <input type="text" name=firstName class = "textInput"> </br> </br> <label type=text
+					for="lastName">LastName: </label> <input type="text" name=lastName class = "textInput">
+					</br> </br> <label type=text for="username">Username: </label> <input
+					type="text" name=username class = "textInput"> </br> </br> <label type=text for="email">Email:
+				</label> <input type="text" name=email class = "textInput"> </br> </br> <label type=text
+					for="password">Password: </label> <input type="password"
+					name=password class = "textInput"> </br> </br>
+				</span> 
+				<input type="submit" value="Submit" class=button id = "SubmitButton">  
+				<input type="reset" class=button id = "ResetButton">
+
+			</form>
+		</fieldset>
+		<p th:text="${message}"> </p>
+		<p >  <span th:text = "${id} " style = "color:red;"> </span>  </p>
+	</div>
+</body>
+</html>

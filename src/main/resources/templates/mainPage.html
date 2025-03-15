@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome here</title>
+<link rel = "stylesheet" type = "text/css" href = "css/background.css" > 
+<style>
+
+	body{
+		
+		background-size:cover;
+		margin: 0px;
+		padding: 0px;
+	}
+	h3{
+		padding: 10px;
+		
+	}
+	#services{
+		width: 60%;
+		border: 2pxsolid red;
+		color: black;
+		position: absolute;
+		margin: 10px 20%;
+		text-align: center;
+		
+	}
+	
+	.service{
+		
+		width: 50px;
+		border-radius: 10%;
+		margin: auto;
+		margin-bottom: 10px;
+		padding: 10px;
+		background-color: white;
+		color: blue;
+		font-weight: bolder;
+		
+	}
+	.service:hover{
+		background-color: green;
+		color: white;
+		font-weight: bolder;
+	}
+	
+	#userDetails{
+		color: black;
+		
+		text-align: center;
+		background-color: white;
+	}
+
+	#firstSection , #thirdSection{
+		background-color:green;
+		height: 10px;
+	}
+	.special{
+		color:green;
+	}
+
+	#footer{
+		position:fixed;
+		bottom:0px;
+		left:0px;
+		right: 0px;
+	}
+
+	#firstHead, #thirdHead{
+		background-color: green;
+		width: 100%;
+		height: 10px;
+	}
+	#secondHead{
+		background-color: white;
+		text-align:center;
+	}
+</style>
+</head>
+
+<body>
+	
+	<div id = container>
+		<section id = "firstSection">
+
+		</section>
+		<div id = userDetails >
+			<h2> Hi, <span th:text = "${session.username}"> </span> with Id <span th:text = "${session.id}" class = special> John Doe </span> </h3>
+			<h3> Your balance is <span  id = "balance" th:text = "${session.balance}" class = special>  </span></h3>
+		</div>
+
+		<section id = "thirdSection">
+
+		</section>
+		<section id = services>
+			<a href = "/transfer" target = "_blank"> <p class = service> Tranfer</p></a>
+
+			<a href = "/history" ><p class = service> History </p></a>
+		</section>
+
+		<footer id = footer>
+			<section id = firstHead  class = headers> </section>
+			<section id = secondHead class = headers> 
+				<h5> adagejem@gmail.com </h5>
+			</section>
+			<section id = thirdHead  class = headers> </section>
+	 
+		</footer>
+
+		
+	</div>
+
+	<script>
+        // Wait until the page is fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Establish WebSocket connection when the page loads
+            const socket = new WebSocket('ws://localhost:8082/balance-updates'); // Adjust URL to your WebSocket endpoint
+
+            // When the WebSocket connection is established
+            socket.onopen = function() {
+                console.log('WebSocket connected!');
+                // Optionally, send a message to the server if needed
+                // socket.send(JSON.stringify({action: 'requestBalanceUpdate'}));
+            };
+
+            // Listen for incoming WebSocket messages
+            socket.onmessage = function(event) {
+                const message = JSON.parse(event.data);
+				console.log("Hi, testing the message" + message);
+                if (message.balance) {
+                    // Update the balance displayed in the UI
+                    document.getElementById('balance').textContent =  message.balance;
+                    console.log(message.balance);
+                }
+            };
+
+            // Handle errors
+            socket.onerror = function(error) {
+                console.error('WebSocket error:', error);
+                document.getElementById('balance').textContent =  "Error loading balance"
+            };
+
+            // Handle WebSocket closure
+            socket.onclose = function() {
+                console.log('WebSocket connection closed');
+            };
+        });
+    </script>
+</body>
+</html>

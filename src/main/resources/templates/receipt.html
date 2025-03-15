@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href = "css/background.css" rel = "stylesheet" type = "text/css">
+
+<style>
+	#container{
+		background-color: white;
+		width: 80%;
+		margin-left: 10%;
+		margin-right: 10%;
+		border-radius: 20px;
+		box-shadow: 2px 3px 3px black;
+		
+	}
+	td{
+		padding: 10px;
+	}
+	#verified{
+		width: 26%;
+		margin: 10px 37%;
+		
+	}
+	table{
+		text-align: center;
+		border:2px solid  red;
+		width: 60%;
+		margin: 10px 20% 10px 20%; 
+		
+		
+	}
+</style>
+</head>
+<body>
+	<div id = container>
+		<img src = "images/verified.png" id = verified>
+		<table>
+			<tr>
+				<th> Receipt </th>
+			</tr>
+			<tr>
+				<td > Sender Name </td>
+				<td th:text = "${session.payment.senderName}">
+			</tr>
+			<tr> 
+				<td> Receiver Name </td>
+				<td th:text = "${session.payment.receiverName}">
+			</tr>
+		</table>
+	</div>
+	
+</body>
+</html>
