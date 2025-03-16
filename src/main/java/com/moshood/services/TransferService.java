@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.moshood.config.BalanceWebSocketHandler;
+import com.moshood.exception.CantSendToYourSelfException;
 import com.moshood.exception.InsufficientAmountException;
 import com.moshood.exception.UserNotFoundException;
 import com.moshood.model.Account;
@@ -30,7 +31,11 @@ public class TransferService  {
 	}
 	private final Logger logger = Logger.getLogger("Transfer Service");
 
-	public void transferMoney(long senderId, long receiverId,BigDecimal amount) throws InsufficientAmountException, UserNotFoundException {
+	public void transferMoney(long senderId, long receiverId,BigDecimal amount) throws InsufficientAmountException, UserNotFoundException, CantSendToYourSelfException {
+		
+		if (senderId == receiverId) {
+			throw new CantSendToYourSelfException();
+		}
 		Account senderAccount = accountRepository.findById(senderId).get();
 		Account receiverAccount = accountRepository.findById(receiverId).get();
 		
@@ -45,7 +50,7 @@ public class TransferService  {
 		accountRepository.updateBalance(senderId, senderNewAmount);
 		accountRepository.updateBalance(receiverId, receiverNewAmount);
 		 
-		BigDecimal senderBalance = accountRepository.findById(senderId).get().getBalance();
+		BigDecimal senderBalance = accountRepository.findById(senderId).get().getBalance(); 
 		BigDecimal receiverBalance = accountRepository.findById(receiverId).get().getBalance();
 		
 //		balanceWebSocketHandler.sendToUser(senderName, receiverName, senderBalance.subtract(amount), receiverBalance.add(amount));

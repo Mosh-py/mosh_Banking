@@ -18,6 +18,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.moshood.config.BalanceWebSocketHandler;
 import com.moshood.dto.Payment;
+import com.moshood.exception.CantSendToYourSelfException;
 import com.moshood.exception.InsufficientAmountException;
 import com.moshood.exception.UserNotFoundException;
 import com.moshood.observer.LogInComponent;
@@ -117,11 +118,14 @@ public class AfterLogInController {
 			} catch (UserNotFoundException e) {
 				session.setAttribute("message", "sorry, user with id" + receiversId + "not found");
 				return "handleError";
-			}catch(Exception e) {
+			} catch (CantSendToYourSelfException e) {
+				session.setAttribute("message" , "Hi, you can't send money to your account");
+				return "handleError";
+				}
+			catch(Exception e) {
 				session.setAttribute("message", "Something went wrong, kindly try again");
 				e.printStackTrace();
 				return "handleError";
-				
 			}
 			
 			return "successfulTransfer";
