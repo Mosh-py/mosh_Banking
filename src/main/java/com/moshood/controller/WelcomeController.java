@@ -90,12 +90,12 @@ public class WelcomeController {
 			 else {
 				 message = "You inputted the wrong Password";
 				 model.addAttribute("message", message);
-				 return "logIn";
+				 return "login";
 			 }
 		 }
 		model.addAttribute("message", message);
 		// return logIn.html
-		return "logIn";
+		return "login";
 	}
 	
 	

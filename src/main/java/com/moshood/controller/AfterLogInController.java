@@ -128,7 +128,7 @@ public class AfterLogInController {
 				return "handleError";
 			}
 			
-			return "successfulTransfer";
+			return "SuccessfulTransfer";
 			
 		
 	}
