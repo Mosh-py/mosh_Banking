@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBC News Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        #container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        #header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .eachSection {
+            width: 100%;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .eachSection img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .eachSection p a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .eachSection p a:hover {
+            text-decoration: underline;
+        }
+
+        #connectWithMe {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        #connectWithMe:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons {
+            display: block;
+            position: absolute;
+            bottom: 70px;
+            right: 10px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icons a {
+            display: block;
+            margin: 10px 0;
+            font-size: 24px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h2>Welcome to News Section <i> Source:  BBC </i>  </span> </h2>
+        </div>
+        <main>
+            <section class="eachSection" th:each="article : ${articles}">
+                <img th:src="${article.urlToImage}" alt="News Image">
+                <p>
+                    <a th:href="${article.url}" target="_blank">
+                        <span th:text="${article.title}"></span>
+                    </a>
+                </p>
+            </section>
+        </main>
+    </div>
+    
+   <!--  <div id="connectWithMe" onclick="toggleSocialIcons()">
+        <i class="fas fa-share-alt"></i>
+    </div>  -->
+    
+    <div class="social-icons" id="socialIcons">
+        <a href="https://wa.me/qr/WWB7RPMRGHBZJ1" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://x.com/Adagejem?s=09" target="_blank">
+            <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/adageje-moshood-265773210" target="_blank">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </div>
+
+    <script>
+       // function toggleSocialIcons() {
+        //    const socialIcons = document.getElementById('socialIcons');
+        //    socialIcons.style.display = socialIcons.style.display === 'block' ? 'none' : 'block';
+        //} 
+    </script>
+</body>
+</html>

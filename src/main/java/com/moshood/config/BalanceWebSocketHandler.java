@@ -53,14 +53,14 @@ public class BalanceWebSocketHandler extends TextWebSocketHandler {
 			logger.info("the keys are " + sessions.keySet());
 			logger.info(" " + sessions.containsKey(id));
 			logger.info(" The id we are lokin for " + id);
-			WebSocketSession session = sessions.get(id);
-			logger.info("Gotten two sessions " + id + session);
+			WebSocketSession session = sessions.get(id); 
+			
 
 			if (session != null && session.isOpen()) {
 				logger.info("Trying to send to frontend");
 				String message = "{\"balance\": " + balance + "}";
 				try {
-					session.sendMessage(new TextMessage(message));
+					session.sendMessage(new TextMessage(message)) ;
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
