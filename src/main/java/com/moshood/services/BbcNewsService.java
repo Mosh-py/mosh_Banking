@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -26,8 +27,10 @@ import lombok.RequiredArgsConstructor;
 @Service 
 public class BbcNewsService implements NewsService {
 	
-//	private static final String API_KEY = "";
-	private static final String NEWS_URL = "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=b59feca5c01748a6aa8f1c79cb51e66c";
+	
+	private static final  String API_KEY = "b59feca5c01748a6aa8f1c79cb51e66c";
+	
+	private static final String NEWS_URL = "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey="+API_KEY;
 	private final RestTemplate restTemplate;
 	
 	private final AccountRepository accountRepository;
@@ -38,11 +41,11 @@ public class BbcNewsService implements NewsService {
 	public Optional<NewsResponse> fetchTopHeadlines(long id) {
 	    BigDecimal balance;
 	    double cost = 10;
-	    
+	    System.out.println(API_KEY);
 	    try {
 	    	logger.info("from the service is " + id);
 	    	Account account = accountRepository.findById(id).get();
-	    	String username = account.getUsername();
+	    	String username = account.getUsername().toLowerCase();
 	        balance = account.getBalance();
 	        
 	        if (balance.compareTo(BigDecimal.valueOf(cost)) >= 0) {

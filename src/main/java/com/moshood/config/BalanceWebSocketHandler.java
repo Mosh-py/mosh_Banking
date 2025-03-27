@@ -64,7 +64,7 @@ public class BalanceWebSocketHandler extends TextWebSocketHandler {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-
+  
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/app/v1/news")
 @RequiredArgsConstructor
 public class NewsController {
+	
 	private final BbcNewsService newsService;
 	private final LogInComponent logInComponent;
 	private final Logger logger = Logger.getLogger("News Controller");

@@ -142,7 +142,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const socket = new WebSocket('wss://moshbanking-production.up.railway.app/balance-updates');
+            const socket = new WebSocket('ws://localhost:8080/balance-updates');
             const loader = document.getElementById('loader');
 
             socket.onopen = function() {
